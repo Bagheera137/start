@@ -1,16 +1,27 @@
 import random
-a=input("угадай число")
+pop=1
+a=input("угадай число " + str(pop) + " попытка" )
+isn=a.isnumeric()
+while isn==False:
+    a=input("надо вводить число")
+    isn=a.isnumeric()
 a=int(a)
-b=random.randint(50,50)
+b=random.randint(1,1)
+
 while a!=b:
     while a<b:
-       a = input("моё число больше")
-       a = int(a)
-    while a>b:
-        a = input("моё число меньше")
+        pop = pop + 1
+        a = input("моё число больше "+str(pop)+ " попытка")
+        isn=a.isnumeric()
+        while isn==False:
+            a = input("надо вводить число")
+            isn = a.isnumeric()
         a = int(a)
-    if a==b:
-        # a = input("угадай число")
-        # a = int(a)
-        print("угадал")
+
+    while a>b:
+        pop = pop + 1
+        a = input("моё число меньше "+str(pop)+ " попытка")
+        a = int(a)
+a = int(a)
+print("угадал с ", pop ,"попытки")
 
