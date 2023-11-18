@@ -1,9 +1,10 @@
 import random
+import time
 
 import wrap
 
 wrap.world.create_world(400,600)
-
+wrap.world.set_back_color(123,221,100)
 crab=wrap.sprite.add("mario-enemies", 350, 600, "crab")
 
 
@@ -14,6 +15,10 @@ wrap.sprite.set_size(fireball,random.randint(20,40),random.randint(20,150))
 
 b=-7
 a=-5
+c = time.time()
+w=time.time()-c
+tx=wrap.sprite.add_text(str(w), 200, 300)
+
 while True:
     wrap.sprite.move(fireball, 0, b)
 
@@ -23,6 +28,10 @@ while True:
         b=7
     if bot >= 600:
         b=-7
+
+    w=time.time()-c
+    wrap.sprite_text.set_text(tx,str(w))
+    print(w)
 
     wrap.sprite.move(crab, 0, a)
 
