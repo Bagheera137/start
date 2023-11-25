@@ -17,7 +17,7 @@ b=-7
 a=-5
 c = time.time()
 w=time.time()-c
-tx=wrap.sprite.add_text(str(w), 200, 300)
+tx=wrap.sprite.add_text(str(int(w))+" секунд", 200, 300)
 
 while True:
     wrap.sprite.move(fireball, 0, b)
@@ -30,8 +30,11 @@ while True:
         b=-7
 
     w=time.time()-c
-    wrap.sprite_text.set_text(tx,str(w))
-    print(w)
+    wrap.sprite_text.set_text(tx,str(int(w))+ " секунд")
+    print(w ,"секунд")
+
+    if int(w)==5:
+        c = time.time()
 
     wrap.sprite.move(crab, 0, a)
 
