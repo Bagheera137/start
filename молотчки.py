@@ -15,7 +15,7 @@ wrap.sprite.set_size(fireball,random.randint(20,40),random.randint(20,150))
 
 
 fire=time.time()
-
+mush=time.time()
 b=-7
 a=-5
 c = time.time()
@@ -53,4 +53,9 @@ while True:
         wrap.sprite.add("mario-enemies", 60, gety, "fire_ball")
         fire = time.time()
 
+    rasmush = time.time() - mush
+    if rasmush >= 3:
+        gety1=wrap.sprite.get_y(crab)
+        wrap.sprite.add("mario-enemies", 340, gety1, "mushroom")
+        mush = time.time()
 
