@@ -9,28 +9,32 @@ crab=wrap.sprite.add("mario-enemies", 350, 600, "crab")
 
 
 
-fireball=wrap.sprite.add("mario-3-big", 50, 400, "fireball")
-wrap.sprite.set_size(fireball,random.randint(20,40),random.randint(20,150))
+mario=wrap.sprite.add("mario-3-big", 50, 400, "fireball")
+wrap.sprite.set_size(mario, random.randint(20, 40), random.randint(20, 150))
 
 
 
 fire=time.time()
 mush=time.time()
-b=-7
+speed=-7
 a=-5
 c = time.time()
 w=time.time()-c
 tx=wrap.sprite.add_text(str(int(w))+" секунд", 200, 300)
-
+fireball=None
 while True:
-    wrap.sprite.move(fireball, 0, b)
+    wrap.sprite.move(mario, 0, speed)
 
-    get = wrap.sprite.get_top(fireball)
-    bot = wrap.sprite.get_bottom(fireball)
+    get = wrap.sprite.get_top(mario)
+    bot = wrap.sprite.get_bottom(mario)
+
+    x=wrap.sprite.get_x(crab)
+    y=wrap.sprite.get_y(crab)
+
     if get <= 0:
-        b=7
+        speed=7
     if bot >= 600:
-        b=-7
+        speed=-7
 
     w=time.time()-c
     wrap.sprite_text.set_text(tx,str(int(w))+ " секунд")
@@ -47,11 +51,16 @@ while True:
         a=-7
 
     rasfire = time.time() - fire
-    print(b)
+    print(speed)
     if rasfire >= 2:
-        gety=wrap.sprite.get_y(fireball)
-        wrap.sprite.add("mario-enemies", 60, gety, "fire_ball")
+        gety=wrap.sprite.get_y(mario)
+        fireball=wrap.sprite.add("mario-enemies", 60, gety, "fire_ball")
         fire = time.time()
+
+        #wrap.sprite.move_to(fireball,x,y)
+    if fireball !=None:
+        wrap.sprite.move(fireball,0,-7)
+
 
     rasmush = time.time() - mush
     if rasmush >= 3:
