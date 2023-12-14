@@ -1,6 +1,6 @@
 import random
 import time
-
+import math
 import wrap
 
 wrap.world.create_world(400,600)
@@ -27,9 +27,11 @@ while True:
 
     get = wrap.sprite.get_top(mario)
     bot = wrap.sprite.get_bottom(mario)
+    mariox=wrap.sprite.get_x(mario)
+    marioy=wrap.sprite.get_y(mario)
 
-    x=wrap.sprite.get_x(crab)
-    y=wrap.sprite.get_y(crab)
+
+
 
     if get <= 0:
         speed=7
@@ -52,19 +54,20 @@ while True:
 
     rasfire = time.time() - fire
     print(speed)
-    if rasfire >= 2:
+    if rasfire >= 5:
         gety=wrap.sprite.get_y(mario)
         fireball=wrap.sprite.add("mario-enemies", 60, gety, "fire_ball")
         fire = time.time()
+        crabx = wrap.sprite.get_x(crab)
+        craby = wrap.sprite.get_y(crab)
 
-        #wrap.sprite.move_to(fireball,x,y)
     if fireball !=None:
-        wrap.sprite.move(fireball,0,-7)
+        wrap.sprite.move_at_angle_point(fireball, crabx, craby, 13)
 
 
-    rasmush = time.time() - mush
-    if rasmush >= 3:
-        gety1=wrap.sprite.get_y(crab)
-        wrap.sprite.add("mario-enemies", 340, gety1, "mushroom")
-        mush = time.time()
+    # rasmush = time.time() - mush
+    # if rasmush >= 3:
+    #     gety1=wrap.sprite.get_y(crab)
+    #     wrap.sprite.add("mario-enemies", 340, gety1, "mushroom")
+    #     mush = time.time()
 
