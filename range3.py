@@ -10,10 +10,17 @@ for i in range(random.randint(5,10)):
 
 a=[]
 for b in range(10,590,20):
+    print(b)
     fireball = wrap.sprite.add("mario-enemies", b, 10, "fire_ball")
     a.append(fireball)
-print()
+print(a)
+
+
 while True:
     for c in range(len(a)):
-        wrap.sprite.move(a[c], 0, 10)
-        wrap.sprite.move(a[5], 0, 10)
+
+        if c==5:
+            wrap.sprite.move(a[5], 0, 22)
+        else:
+            wrap.sprite.move(a[c], 0, 10)
+
