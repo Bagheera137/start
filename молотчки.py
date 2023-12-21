@@ -40,7 +40,7 @@ while True:
 
     w=time.time()-c
     wrap.sprite_text.set_text(tx,str(int(w))+ " секунд")
-    print(w ,"секунд")
+    #print(w ,"секунд")
 
 
     wrap.sprite.move(crab, 0, a)
@@ -53,8 +53,8 @@ while True:
         a=-7
 
     rasfire = time.time() - fire
-    print(speed)
-    if rasfire >= 5:
+    #print(speed)
+    if rasfire >= 3:
         gety=wrap.sprite.get_y(mario)
         fireball=wrap.sprite.add("mario-enemies", 60, gety, "fire_ball")
         fire = time.time()
@@ -62,7 +62,22 @@ while True:
         craby = wrap.sprite.get_y(crab)
 
     if fireball !=None:
-        wrap.sprite.move_at_angle_point(fireball, crabx, craby, 13)
+        wrap.sprite.move_at_angle_point(fireball, crabx, craby, 70)
+        col=wrap.sprite.is_collide_sprite(fireball,crab)
+        print(col)
+
+        if col:
+            break
+while True:
+
+    wrap.sprite.move(crab,0,7)
+    angle=wrap.sprite.get_angle(crab)
+    wrap.sprite.set_angle(crab,angle+10)
+
+
+
+
+
 
 
     # rasmush = time.time() - mush
