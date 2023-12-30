@@ -1,7 +1,7 @@
-def hello(name):
+def hello(name,name2):
     print("привет "+ name)
-    print("как твои дела?")
+    print("ты не видел? "+ name2)
 
 
-hello("Женя")
-hello("Дима")
+hello("Женя","Дима")
+hello("Коля","Даня")
