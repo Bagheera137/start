@@ -17,10 +17,12 @@ print(a)
 
 
 while True:
+    b=0
     for c in range(len(a)):
-
-        if c==5:
-            wrap.sprite.move(a[5], 0, 22)
+        b=b+1
+        if b==3:
+            wrap.sprite.move(a[c], 0, 22)
+            b=0
         else:
             wrap.sprite.move(a[c], 0, 10)
 
