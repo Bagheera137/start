@@ -19,10 +19,21 @@ print(a)
 while True:
 
     for c in range(len(a)):
-        b=c+1
-        if b%3==0:
-            wrap.sprite.move(a[c], 0, 22)
 
-        else:
-            wrap.sprite.move(a[c], 0, 10)
+
+        if c%3==2:
+            wrap.sprite.move(a[c], 0, 25)
+        if c%3==1:
+            wrap.sprite.move(a[c], 0, 15)
+       
+        if c%3==0:
+            wrap.sprite.move(a[c], 0, 5)
+
+
+
+
+
+
+
+
 
