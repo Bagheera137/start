@@ -9,6 +9,11 @@ chel["diskwal"]=True
 b.append(chel)
 for i in b:
     i["age"]+=1
+
 for i in b:
     print(i["name"],i["age"])
 
+c=[1,2,3,4,5]
+for i in c:
+    i+=1
+print(c)
