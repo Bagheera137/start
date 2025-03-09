@@ -3,17 +3,24 @@ import random
 import wrap
 wrap.world.create_world(500,500)
 a=[]
-y=50
+point=[]
+
 click=False
-for i in range(random.randint(3,8)):
-    pacman=wrap.sprite.add("pacman",50,y,"player2")
-    slovar={"number":pacman,
-            "speed":random.randint(5,10),
-            "point_x":random.randint(100,400),
-            "point_y":random.randint(100,400)
-            }
+space=False
+@wrap.on_key_down(wrap.K_SPACE)
+def move_sprite():
+    global space
+    space=not space
+@wrap.always()
+    while space==True:
+        pacman=wrap.sprite.add("pacman",100,200,"player2")
+        slovar={"number":pacman,
+                "speed":random.randint(5,10),
+                "point_x":random.randint(100,400),
+                "point_y":random.randint(100,400)
+                }
     a.append(slovar)
-    y = y + 70
+
 print(a)
 @wrap.always()
 def move():
@@ -24,8 +31,13 @@ def move():
 def mouse_move():
     global click
     click=not click
+    if click:
+        for i in range(len(point)):
+            wrap.sprite.remove(point[0])
+            del point[0]
 
 @wrap.on_mouse_move()
 def make_point(pos_x,pos_y):
     if click:
-        wrap.sprite.add("pacman", pos_x, pos_y, "dot")
+        dot=wrap.sprite.add("pacman", pos_x, pos_y, "dot")
+        point.append(dot)
