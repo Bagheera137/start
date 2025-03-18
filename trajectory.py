@@ -6,7 +6,7 @@ a=[]
 point=[]
 click=False
 space=False
-number=0
+number=1
 @wrap.on_key_down(wrap.K_SPACE)
 def move_sprite():
     global space
@@ -30,7 +30,8 @@ def add_pacman():
         slovar={"number":pacman,
                 "speed":random.randint(3,3),
                 "point_x":x1,
-                "point_y":y1
+                "point_y":y1,
+                "point_number":1
                 }
         a.append(slovar)
 
@@ -40,14 +41,15 @@ def move():
     global number
     for i in a:
         wrap.sprite.move_at_angle_point(i["number"],i["point_x"],i["point_y"],i["speed"])
-        print(wrap.sprite.get_pos(a[0]["number"]),a[0],wrap.sprite.is_collide_point(i["number"],i["point_x"],i["point_y"]))
-        if wrap.sprite.is_collide_sprite(point[number+1],i["number"]):
-            number = number + 1
-            x1 = wrap.sprite.get_x(point[number])
-            y1 = wrap.sprite.get_y(point[number])
-            print(x1,y1)
+        if i["point_number"] == len(point)-1:
+            continue
+        if wrap.sprite.is_collide_sprite(point[i["point_number"]],i["number"]):
+            i["point_number"]+= 1
+            x1 = wrap.sprite.get_x(point[i["point_number"]])
+            y1 = wrap.sprite.get_y(point[i["point_number"]])
             i["point_x"]=x1
             i["point_y"] =y1
+
 
 
 
@@ -66,5 +68,5 @@ def mouse_move():
 def make_point(pos_x,pos_y):
     if click:
         dot=wrap.sprite.add("pacman", pos_x, pos_y, "dot")
-        wrap.sprite.set_size_percent(dot, 200, 200)
+       # wrap.sprite.set_size_percent(dot, 200, 200)
         point.append(dot)
